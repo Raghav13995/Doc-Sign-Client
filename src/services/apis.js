@@ -1,4 +1,4 @@
-const BASE_URL = "https://doc-sign-server.onrender.com/api"
+const BASE_URL = "https://doc-sign-server.onrender.com/api/"
 
 export const AUTH_API = {
   REGISTER: BASE_URL+ "auth/register",
