@@ -21,7 +21,7 @@ import {
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+const SERVER_BASE_URL = "https://doc-sign-server.onrender.com";
 
 const Dashboard = () => {
   const [documents, setDocuments] = useState([]);
