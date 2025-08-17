@@ -21,7 +21,7 @@ import {
   FaFont,
 } from "react-icons/fa";
 
-const SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
+const SERVER_BASE_URL = "https://doc-sign-server.onrender.com";
 
 const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,token }) => {
   const [signatures, setSignatures] = useState([]);
@@ -37,7 +37,7 @@ const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,toke
 
   const fetchSavedSignatureImage = async () => {
     try {
-      const res = await apiConnector("get", `http://localhost:5000/api/saved-signature/me`, null, {
+      const res = await apiConnector("get", `https://doc-sign-server.onrender.com/api/saved-signature/me`, null, {
         withCredentials: true,
       });
       if (res?.signatureImage) {
@@ -58,7 +58,7 @@ const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,toke
       toast.success("Signature saved locally. Click to place it.");
 
       try {
-        await apiConnector("post", `http://localhost:5000/api/saved-signature/save`, { image: dataUrl }, {
+        await apiConnector("post", `https://doc-sign-server.onrender.com/api/saved-signature/save`, { image: dataUrl }, {
           withCredentials: true,
         });
         toast.success("Signature saved for future use");
@@ -97,7 +97,7 @@ const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,toke
   const handleSaveToServer = async () => {
     try {
       for (const sig of signatures) {
-        await apiConnector("post", "http://localhost:5000/api/signatures", {
+        await apiConnector("post", "https://doc-sign-server.onrender.com/api/signatures", {
           documentId: pdfDoc._id,
           x: sig.x,
           y: sig.y,
@@ -120,7 +120,7 @@ const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,toke
     if (!signatures.length) return toast.error("No signatures placed to submit");
     try {
       for (const sig of signatures) {
-        await apiConnector("post", `http://localhost:5000/api/public-signature/submit/${token}`, {
+        await apiConnector("post", `https://doc-sign-server.onrender.com/api/public-signature/submit/${token}`, {
           documentId: pdfDoc._id,
           x: sig.x,
           y: sig.y,
@@ -142,7 +142,7 @@ const PDFEditor = ({ document: pdfDoc, goBack, isPublic = false, onComplete,toke
 
   const fetchSavedSignatures = useCallback(async () => {
     try {
-      const res = await apiConnector("get", `http://localhost:5000/api/signatures/${pdfDoc._id}`, null, {
+      const res = await apiConnector("get", `https://doc-sign-server.onrender.com/api/signatures/${pdfDoc._id}`, null, {
         withCredentials: true,
       });
       if (Array.isArray(res?.signatures)) {
@@ -292,7 +292,7 @@ const handleExport = async () => {
       <div ref={containerRef} onClick={handlePlaceSignature} className="relative border bg-white shadow rounded-md p-2 flex justify-center min-h-[80vh]">
         <div className="relative border bg-white shadow rounded-md p-2 mx-auto" style={{ width: '90vw', maxWidth: '1000px' }}>
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-          <Viewer fileUrl={`http://localhost:5000/${pdfDoc.filepath}`} onPageChange={(e) => setCurrentPage(e.currentPage + 1)} />
+          <Viewer fileUrl={`https://doc-sign-server.onrender.com/${pdfDoc.filepath}`} onPageChange={(e) => setCurrentPage(e.currentPage + 1)} />
         </Worker>
         </div>
 
