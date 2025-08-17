@@ -42,7 +42,7 @@ const Dashboard = () => {
 
   const fetchDocuments = async () => {
     try {
-      const res = await apiConnector("get", https://doc-sign-server.onrender.com/, null, {
+      const res = await apiConnector("get", https://doc-sign-server.onrender.com/docs, null, {
         withCredentials: true,
       });
       if (Array.isArray(res?.documents)) {
