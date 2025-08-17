@@ -61,7 +61,7 @@ const Dashboard = () => {
       setLoadingSigners(true);
       const res = await apiConnector(
         "get", 
-        `http://localhost:5000/api/public-signature/docSigner/${documentId}`,
+        `https://doc-sign-server.onrender.com/api/public-signature/docSigner/${documentId}`,
         null,
         { withCredentials: true }
       );
