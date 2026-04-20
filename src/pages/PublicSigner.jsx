@@ -13,7 +13,7 @@ const PublicSigner = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const res = await apiConnector("get", PUBLIC_SIGNATURE_API.VIEW_DOCUMENT);
+        const res = await apiConnector("get", PUBLIC_SIGNATURE_API.VIEW_DOCUMENT(token);
         
         console.log("Document fetched:", res.document);
         setDocument(res.document);
@@ -27,7 +27,7 @@ const PublicSigner = () => {
 
   const handlePublicSignatureConfirm = async () => {
     try {
-      await apiConnector("post",PUBLIC_SIGNATURE_API.CONFIRM_SIGNATURE);
+      await apiConnector("post",PUBLIC_SIGNATURE_API.CONFIRM_SIGNATURE(token));
       toast.success("Signature confirmed");
       setSigned(true);
     } catch (err) {
