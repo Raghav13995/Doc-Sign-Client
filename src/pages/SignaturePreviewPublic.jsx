@@ -132,7 +132,7 @@ const SignaturePreviewPublic = () => {
           >
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
               <Viewer 
-                fileUrl={`http://localhost:5000/${document.filepath}`}
+                fileUrl={`https://doc-sign-server.onrender.com/api/${document.filepath}`}
                 onPageChange={handlePageChange}
                 onDocumentLoad={measureElements}
               />
