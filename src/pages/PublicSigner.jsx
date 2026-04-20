@@ -13,7 +13,7 @@ const PublicSigner = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const res = await apiConnector("get", `http://localhost:5000/api/public-signature/view/${token}`);
+        const res = await apiConnector("get", PUBLIC_SIGNATURE_API);
         
         console.log("Document fetched:", res.document);
         setDocument(res.document);
